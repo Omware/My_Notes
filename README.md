@@ -3,7 +3,7 @@
 ![GitHub Cards Preview]()
 
 # My Notes
-**My Notes** is a simple note-taking Android application that uses Modern Android development tools.
+My Notes is a simple note-taking Android application that uses modern android development tools.
 
 
 ## Built With 🛠
@@ -20,7 +20,7 @@
     
 This app uses [***MVVM (Model View View-Model)***](https://developer.android.com/jetpack/docs/guide#recommended-app-arch) architecture.
 
-![]()
+![](https://github.com/Omware/My_Notes/blob/master/app/src/main/res/drawable/mvvm.png)
 
 
 ## Contact
