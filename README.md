@@ -1,11 +1,9 @@
 
 
-![GitHub Cards Preview](https://github.com/TheCodeMonks/Notes-App/blob/master/screenshots/NOTZZ%20APP%20CARD.jpg?raw=true)
+![GitHub Cards Preview]()
 
 # My Notes
-**My Notes** is a simple note-taking 📝 Android application built to describe the use of Modern Android development tools.
-
-
+**My Notes** is a simple note-taking Android application that uses Modern Android development tools.
 
 
 ## Built With 🛠
