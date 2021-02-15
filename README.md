@@ -7,14 +7,14 @@ My Notes is a simple note-taking Android application that uses modern android de
 
 
 ## Built With 🛠
-- [Kotlin](https://kotlinlang.org/) - First class and official programming language for Android development.
-- [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - For asynchronous and more..
-- [Android Architecture Components](https://developer.android.com/topic/libraries/architecture) - Collection of libraries that help you design robust, testable, and maintainable apps.
-  - [Stateflow](https://developer.android.com/kotlin/flow/stateflow-and-sharedflow) - StateFlow is a state-holder observable flow that emits the current and new state updates to its collectors. 
-  - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - Stores UI-related data that isn't destroyed on UI changes. 
-  - [Room](https://developer.android.com/topic/libraries/architecture/room) - SQLite object mapping library.
+- [Kotlin](https://kotlinlang.org/) - Programming language for Android development.
+- [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - Converts async callbacks for long-running tasks, such as database or network access, into sequential code.
+- [Android Architecture Components](https://developer.android.com/topic/libraries/architecture) - Collection of libraries that help you design robust, testable, and maintainable apps. 
+  - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - Store and manages UI-related data in a lifecycle conscious way and allows data to survive configuration changes.
+  - [Room](https://developer.android.com/topic/libraries/architecture/room) - An abstraction layer over SQLite to allow fluent database access while harnessing the full power of SQLite.
+  - [DataBinding](https://developer.android.com/topic/libraries/data-binding) - Support library that allows you to bind UI components in your layouts to data sources in your app.
   - [Jetpack Navigation](https://developer.android.com/guide/navigation) - Navigation refers to the interactions that allow users to navigate across, into, and back out from the different pieces of content within your app
-- [Material Components for Android](https://github.com/material-components/material-components-android) - Modular and customizable Material Design UI components for Android.
+- [Material Components for Android](https://github.com/material-components/material-components-android) - UI components for Android.
 
 
     
