@@ -1,6 +1,6 @@
 
 
-![GitHub Cards Preview]()
+![GitHub Cards Preview](https://raw.githubusercontent.com/Omware/My_Notes/master/app/src/main/res/drawable/mynotes_cover.png)
 
 # My Notes
 My Notes is a simple note-taking Android application that uses modern android development tools.
