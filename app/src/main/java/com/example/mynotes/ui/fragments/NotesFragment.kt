@@ -1,17 +1,23 @@
 package com.example.mynotes.ui.fragments
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.*
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.mynotes.R
 import com.example.mynotes.adapter.NotesAdapter
 import com.example.mynotes.databinding.FragmentNotesBinding
 import com.example.mynotes.viewmodel.NotesViewModel
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.notes_lyt.view.*
 
 class NotesFragment : Fragment() {
 
@@ -42,7 +48,12 @@ class NotesFragment : Fragment() {
         }
 
         viewModel.getAllNotes.observe(viewLifecycleOwner, {
-            adapter.setNotes(it)
+            if (it.isEmpty()) {
+                binding.imageLlyt.visibility = View.VISIBLE
+            } else {
+                binding.recyclerView.visibility = View.VISIBLE
+                adapter.setNotes(it)
+            }
         })
 
         return binding.root
@@ -54,20 +65,49 @@ class NotesFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        return inflater.inflate(R.menu.delete_menu, menu)
-
+        return inflater.inflate(R.menu.main_menu, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.delete) {
-            deleteAllNotes()
+
+        return when (item.itemId) {
+//            R.id.mode -> {
+//                val mode =
+//                    if ((resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_NO) {
+//                        AppCompatDelegate.MODE_NIGHT_YES
+//                    } else {
+//                        AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY
+//                    }
+//
+//                // Change UI Mode
+//                AppCompatDelegate.setDefaultNightMode(mode)
+//                true
+//            }
+
+            R.id.delete -> {
+                deleteAllNotes()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
-        return super.onOptionsItemSelected(item)
     }
 
     // delete all notes
     private fun deleteAllNotes() {
-        viewModel.deleteAllNotes()
+
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle("Delete notes")
+            .setMessage("Are you sure you want to delete all your notes?")
+
+            .setNegativeButton("Cancel") { _, _ ->
+                // Respond to negative button press
+            }
+            .setPositiveButton("Delete") { _, _ ->
+                // Respond to positive button press
+                viewModel.deleteAllNotes()
+                binding.recyclerView.visibility = View.GONE
+            }
+            .show()
     }
 
 }

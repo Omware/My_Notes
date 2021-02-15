@@ -44,4 +44,5 @@ class NotesAdapter : RecyclerView.Adapter<NotesAdapter.NoteViewHolder>() {
         this.notes = note
         notifyDataSetChanged()
     }
+
 }

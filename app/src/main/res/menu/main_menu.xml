@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/mode"
+        android:icon="@drawable/ic_bulb"
+        android:title="@string/mode"
+        app:showAsAction="always" />
+
+    <item
         android:id="@+id/delete"
         android:icon="@drawable/ic_delete"
         android:title="@string/delete"
