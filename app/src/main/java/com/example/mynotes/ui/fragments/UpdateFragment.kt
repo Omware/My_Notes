@@ -67,7 +67,7 @@ class UpdateFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        return inflater.inflate(R.menu.main_menu, menu)
+        return inflater.inflate(R.menu.update_menu, menu)
 
     }
 
