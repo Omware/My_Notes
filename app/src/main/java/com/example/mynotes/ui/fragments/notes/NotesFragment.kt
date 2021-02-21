@@ -1,4 +1,4 @@
-package com.example.mynotes.ui.fragments
+package com.example.mynotes.ui.fragments.notes
 
 import android.content.res.Configuration
 import android.os.Bundle
@@ -17,12 +17,13 @@ import com.example.mynotes.databinding.FragmentNotesBinding
 import com.example.mynotes.viewmodel.NotesViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.notes_lyt.view.*
+import kotlinx.android.synthetic.main.fragment_notes.*
 
 class NotesFragment : Fragment() {
 
     private lateinit var binding: FragmentNotesBinding
     private lateinit var viewModel: NotesViewModel
+    private lateinit var noteadapter: NotesAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,12 +35,13 @@ class NotesFragment : Fragment() {
 
         setHasOptionsMenu(true)
 
-        val adapter = NotesAdapter()
+        swipeToDeleteNote()
+        noteadapter = NotesAdapter()
 
         binding.apply {
 
             recyclerView.layoutManager = LinearLayoutManager(requireContext())
-            recyclerView.adapter = adapter
+            recyclerView.adapter = noteadapter
             recyclerView.setHasFixedSize(true)
 
             floatingActionButton.setOnClickListener {
@@ -52,11 +54,52 @@ class NotesFragment : Fragment() {
                 binding.imageLlyt.visibility = View.VISIBLE
             } else {
                 binding.recyclerView.visibility = View.VISIBLE
-                adapter.setNotes(it)
+                noteadapter.differ.submitList(it)
             }
         })
 
         return binding.root
+    }
+
+    private fun swipeToDeleteNote() {
+
+        val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(
+            ItemTouchHelper.UP or ItemTouchHelper.DOWN,
+            ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
+        ) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder,
+            ): Boolean {
+                return true
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                // get current item
+                val position = viewHolder.adapterPosition
+                val note = noteadapter.differ.currentList[position]
+                viewModel.deleteNote(note)
+
+                Snackbar.make(
+                    binding.root,
+                    getString(R.string.note_deleted),
+                    Snackbar.LENGTH_LONG
+                )
+                    .apply {
+                        setAction("Undo") {
+                            viewModel.insertNote(note)
+                            image_llyt.visibility = View.GONE
+                        }
+                        show()
+                    }
+            }
+        }
+
+        // attach swipe to recyclerview
+        ItemTouchHelper(itemTouchHelperCallback).apply {
+            attachToRecyclerView(binding.recyclerView)
+        }
     }
 
     // navigate to addnotes fragment

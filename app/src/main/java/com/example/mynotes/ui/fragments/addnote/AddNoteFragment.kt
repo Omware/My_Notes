@@ -1,4 +1,4 @@
-package com.example.mynotes.ui.fragments
+package com.example.mynotes.ui.fragments.addnote
 
 import android.os.Bundle
 import android.text.TextUtils
