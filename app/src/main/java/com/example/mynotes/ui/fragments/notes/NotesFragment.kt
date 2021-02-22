@@ -1,9 +1,8 @@
 package com.example.mynotes.ui.fragments.notes
 
-import android.content.res.Configuration
 import android.os.Bundle
 import android.view.*
-import androidx.appcompat.app.AppCompatDelegate
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -124,6 +123,7 @@ class NotesFragment : Fragment() {
 //
 //                // Change UI Mode
 //                AppCompatDelegate.setDefaultNightMode(mode)
+                Toast.makeText(requireContext(), "Coming soon", Toast.LENGTH_LONG).show()
                 true
             }
 
