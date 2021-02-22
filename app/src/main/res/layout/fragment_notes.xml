@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:configChanges="uiMode"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:configChanges="uiMode"
         tools:context=".ui.fragments.notes.NotesFragment">
 
         <androidx.recyclerview.widget.RecyclerView

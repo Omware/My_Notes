@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">My Notes</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="delete">Delete</string>
     <string name="mode">Mode</string>
     <string name="note_deleted">Note deleted</string>

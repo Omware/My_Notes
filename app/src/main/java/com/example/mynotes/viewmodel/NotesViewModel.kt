@@ -4,12 +4,10 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.example.mynotes.database.NotesDao
 import com.example.mynotes.database.NotesDatabase
 import com.example.mynotes.model.Note
 import com.example.mynotes.repository.NoteRepository
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 
 class NotesViewModel(application: Application) : AndroidViewModel(application) {
