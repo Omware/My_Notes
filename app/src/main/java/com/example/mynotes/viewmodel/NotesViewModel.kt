@@ -16,6 +16,7 @@ class NotesViewModel(application: Application) : AndroidViewModel(application) {
     private val repository: NoteRepository
 
     init {
+        /** get reference to data source via a reference to the DAO */
         val notesDao = NotesDatabase.getInstance(application).notesDao
         repository = NoteRepository(notesDao)
         getAllNotes = repository.getAllNotes

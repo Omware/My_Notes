@@ -19,7 +19,6 @@ import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_notes.*
 
 class NotesFragment : Fragment() {
-
     private lateinit var binding: FragmentNotesBinding
     private lateinit var viewModel: NotesViewModel
     private lateinit var noteadapter: NotesAdapter
@@ -111,24 +110,15 @@ class NotesFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
         return when (item.itemId) {
-            R.id.mode -> {
-//                val mode =
-//                    if ((resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_NO) {
-//                        AppCompatDelegate.MODE_NIGHT_YES
-//                    } else {
-//                        AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY
-//                    }
-//
-//                // Change UI Mode
-//                AppCompatDelegate.setDefaultNightMode(mode)
-                Toast.makeText(requireContext(), "Coming soon", Toast.LENGTH_LONG).show()
-                true
-            }
-
             R.id.delete -> {
-                deleteAllNotes()
+                if (noteadapter.differ.currentList.size == 0) {
+                    Toast.makeText(context, "Currently there are no notes!!", Toast.LENGTH_LONG)
+                        .show()
+                } else {
+                    deleteAllNotes()
+                }
+
                 true
             }
             else -> super.onOptionsItemSelected(item)
